@@ -17,6 +17,7 @@ blitz-log.log
 
 # misc
 .DS_Store
+.tool-versions
 
 # local env files
 .env.local
