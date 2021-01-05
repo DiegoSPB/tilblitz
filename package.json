@@ -28,6 +28,7 @@
     ]
   },
   "dependencies": {
+    "@types/graphql": "14.5.0",
     "autoprefixer": "10.1.0",
     "blitz": "0.27.1",
     "final-form": "4.20.1",

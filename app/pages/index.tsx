@@ -3,11 +3,7 @@ import Layout from "app/layouts/Layout"
 import logout from "app/auth/mutations/logout"
 import { useCurrentUser } from "app/hooks/useCurrentUser"
 import { Suspense } from "react"
-
-/*
- * This file is just for a pleasant getting started page for your new app.
- * You can delete everything in here and start from scratch if you like.
- */
+import PostForm from "app/til/components/PostForm"
 
 const UserInfo = () => {
   const currentUser = useCurrentUser()
@@ -29,6 +25,7 @@ const UserInfo = () => {
           <br />
           User role: <code>{currentUser.role}</code>
         </div>
+        <PostForm onSuccess={() => console.log("success")} />
       </>
     )
   } else {
@@ -52,11 +49,10 @@ const UserInfo = () => {
 const Home: BlitzPage = () => {
   return (
     <div className="container mx-auto">
-      <main>
-        <Suspense fallback="Loading...">
-          <UserInfo />
-        </Suspense>
-      </main>
+      <h1 className="text-5xl md:text-6xl font-extrabold text-gray-700">TODAY I LEARNED</h1>
+      <Suspense fallback="Loading...">
+        <UserInfo />
+      </Suspense>
     </div>
   )
 }
