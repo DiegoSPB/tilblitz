@@ -28,7 +28,6 @@ const UserInfo = () => {
         </div>
 
         <PostForm onSuccess={() => console.log("success")} />
-        <Posts />
       </>
     )
   } else {
@@ -55,6 +54,7 @@ const Home: BlitzPage = () => {
       <h1 className="text-5xl md:text-6xl font-extrabold text-gray-700">TODAY I LEARNED</h1>
       <Suspense fallback="Loading...">
         <UserInfo />
+        <Posts />
       </Suspense>
     </div>
   )

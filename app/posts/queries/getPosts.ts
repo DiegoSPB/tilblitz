@@ -1,14 +1,11 @@
-import { Ctx } from "blitz"
 import db from "db"
 import { gql } from "graphql-request"
 
-export default async function getAllPosts(_ = null, { session }: Ctx) {
-  if (!session.userId) return null
-
+export default async function getAllPosts({ size, cursor }) {
   const { allPosts } = await db.request(
     gql`
-      query allPosts {
-        allPosts {
+      query allPosts($size: Int!, $cursor: String) {
+        allPosts(_size: $size, _cursor: $cursor) {
           data {
             _id
             content
@@ -17,11 +14,18 @@ export default async function getAllPosts(_ = null, { session }: Ctx) {
               email
             }
           }
+          before
+          after
         }
       }
     `,
-    {}
+    { size: size, cursor }
   )
 
-  return allPosts
+  const hasMore = true
+  const nextPage = hasMore ? { size: size, cursor: allPosts.after } : null
+  return {
+    allPosts,
+    nextPage,
+  }
 }
