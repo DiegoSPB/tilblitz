@@ -28,5 +28,7 @@ type Post {
   user: User!
   title: String!
   content: String!
+  language: String!
   tags: [String]
+  createdAt: Time!
 }

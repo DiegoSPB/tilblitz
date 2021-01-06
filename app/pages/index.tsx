@@ -3,7 +3,8 @@ import Layout from "app/layouts/Layout"
 import logout from "app/auth/mutations/logout"
 import { useCurrentUser } from "app/hooks/useCurrentUser"
 import { Suspense } from "react"
-import PostForm from "app/til/components/PostForm"
+import PostForm from "app/posts/components/PostForm"
+import Posts from "app/posts/components/Posts"
 
 const UserInfo = () => {
   const currentUser = useCurrentUser()
@@ -25,7 +26,9 @@ const UserInfo = () => {
           <br />
           User role: <code>{currentUser.role}</code>
         </div>
+
         <PostForm onSuccess={() => console.log("success")} />
+        <Posts />
       </>
     )
   } else {

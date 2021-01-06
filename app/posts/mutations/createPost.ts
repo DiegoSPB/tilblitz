@@ -4,9 +4,7 @@ import { gql } from "graphql-request"
 import { CreatePostInput, CreatePostInputType } from "../validations"
 
 export default async function createPost(input: CreatePostInputType, { session }: Ctx) {
-  const { title, content, tags } = CreatePostInput.parse(input)
-
-  console.log(session)
+  const { title, content, tags, language } = CreatePostInput.parse(input)
 
   const { post } = await db.request(
     gql`
@@ -15,6 +13,7 @@ export default async function createPost(input: CreatePostInputType, { session }
           id: _id
           content
           title
+          language
           tags
           user {
             email
@@ -22,7 +21,16 @@ export default async function createPost(input: CreatePostInputType, { session }
         }
       }
     `,
-    { data: { content: content, title: title, user: { connect: session.userId } } }
+    {
+      data: {
+        createdAt: new Date().toISOString(),
+        language: language.toLowerCase(),
+        tags: tags,
+        content: content,
+        title: title,
+        user: { connect: session.userId },
+      },
+    }
   )
   console.log("Create post result:", post)
 

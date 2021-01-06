@@ -19,7 +19,7 @@ export const PostForm = (props: PostFormProps) => {
       <Form
         submitText="Create Post"
         schema={CreatePostInput}
-        initialValues={{ content: "", title: "", tags: [""] }}
+        initialValues={{ content: "content", title: "Title", language: "ruby", tags: [""] }}
         onSubmit={async (values) => {
           try {
             await signupMutation(values)
@@ -31,6 +31,7 @@ export const PostForm = (props: PostFormProps) => {
       >
         <LabeledTextField name="title" label="Title" placeholder="Title" />
         <LabeledTextField name="content" label="Content" placeholder="Content" />
+        <LabeledTextField name="language" label="Language" placeholder="Language" />
       </Form>
     </div>
   )
