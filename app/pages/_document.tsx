@@ -11,7 +11,7 @@ class MyDocument extends Document {
     return (
       <Html lang="en">
         <DocumentHead />
-        <body>
+        <body style={{ backgroundColor: "#f4fbff" }}>
           <Main />
           <BlitzScript />
         </body>

@@ -2,6 +2,7 @@ import React from "react"
 import { useMutation } from "blitz"
 import { LabeledTextField } from "app/components/LabeledTextField"
 import { Form, FORM_ERROR } from "app/components/Form"
+import { Field } from "react-final-form"
 import { CreatePostInput } from "../validations"
 import createPost from "../mutations/createPost"
 
@@ -30,8 +31,11 @@ export const PostForm = (props: PostFormProps) => {
         }}
       >
         <LabeledTextField name="title" label="Title" placeholder="Title" />
-        <LabeledTextField name="content" label="Content" placeholder="Content" />
         <LabeledTextField name="language" label="Language" placeholder="Language" />
+        <div>
+          Content
+          <Field name="content" component="textarea" rows="10" className="w-full" />
+        </div>
       </Form>
     </div>
   )

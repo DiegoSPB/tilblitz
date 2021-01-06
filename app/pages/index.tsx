@@ -21,11 +21,11 @@ const UserInfo = () => {
         >
           Logout
         </button>
-        <div>
-          User id: <code>{currentUser.id}</code>
-          <br />
-          User role: <code>{currentUser.role}</code>
-        </div>
+        {/* <div> */}
+        {/*   User id: <code>{currentUser.id}</code> */}
+        {/*   <br /> */}
+        {/*   User role: <code>{currentUser.role}</code> */}
+        {/* </div> */}
 
         <PostForm onSuccess={() => console.log("success")} />
       </>
