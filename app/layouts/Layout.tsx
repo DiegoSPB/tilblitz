@@ -14,6 +14,10 @@ const Layout = ({ title, children }: LayoutProps) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
+      <div className="container mx-auto">
+        <h1 className="text-5xl md:text-6xl font-extrabold text-gray-700">TODAY I LEARNED</h1>
+      </div>
+
       {children}
     </>
   )

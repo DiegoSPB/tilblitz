@@ -1,18 +1,7 @@
 import React from "react"
 import getAllPosts from "app/posts/queries/getPosts"
 import { useInfiniteQuery } from "blitz"
-import ReactMarkdown from "react-markdown"
-import CodeBlock from "./CodeBlock"
-import styled from "styled-components"
-
-const Markdown = styled(ReactMarkdown)`
-  &&& {
-    p,
-    pre {
-      margin-bottom: 20px !important;
-    }
-  }
-`
+import Post from "./Post"
 
 export const Posts = () => {
   const [groupedPosts, { isFetching, isFetchingMore, fetchMore, canFetchMore }] = useInfiniteQuery(
@@ -28,12 +17,7 @@ export const Posts = () => {
       {groupedPosts.map((group, i) => (
         <div key={i} className="flex flex-col p-16">
           {group.allPosts.data.map((post: { _id: string; title: string; content: string }) => (
-            <div key={post._id} className="shadow rounded p-16 bg-white mb-16">
-              <h1 className="pb-4 text-3xl font-bold">
-                <a href={`posts/${post._id}`}>{post.title}</a>
-              </h1>
-              <Markdown source={post.content} renderers={{ code: CodeBlock }} allowDangerousHtml />
-            </div>
+            <Post post={post} />
           ))}
         </div>
       ))}

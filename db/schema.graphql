@@ -19,7 +19,8 @@ type Session {
 type Query {
   allUsers: [User!]
   allPosts: [Post!]
-  # findPostbyuser(user: User!): User @index(name: "unique_User")
+  findPostByID(id: ID!): Post
+  # findPostbyUserId(userId: String!): Post!
   findUserByEmail(email: String!): User @index(name: "unique_User_email")
   findSessionByHandle(handle: String!): Session @index(name: "unique_Session_handle")
 }
@@ -28,7 +29,6 @@ type Post {
   user: User!
   title: String!
   content: String!
-  language: String!
   tags: [String]
   createdAt: Time!
 }

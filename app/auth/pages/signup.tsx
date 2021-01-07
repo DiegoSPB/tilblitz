@@ -8,7 +8,8 @@ const SignupPage: BlitzPage = () => {
 
   return (
     <div>
-      <SignupForm onSuccess={() => router.push("/")} />
+      Disabled
+      {/* <SignupForm onSuccess={() => router.push("/")} /> */}
     </div>
   )
 }

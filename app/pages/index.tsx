@@ -3,7 +3,6 @@ import Layout from "app/layouts/Layout"
 import logout from "app/auth/mutations/logout"
 import { useCurrentUser } from "app/hooks/useCurrentUser"
 import { Suspense } from "react"
-import PostForm from "app/posts/components/PostForm"
 import Posts from "app/posts/components/Posts"
 
 const UserInfo = () => {
@@ -26,8 +25,6 @@ const UserInfo = () => {
         {/*   <br /> */}
         {/*   User role: <code>{currentUser.role}</code> */}
         {/* </div> */}
-
-        <PostForm onSuccess={() => console.log("success")} />
       </>
     )
   } else {
@@ -51,9 +48,8 @@ const UserInfo = () => {
 const Home: BlitzPage = () => {
   return (
     <div className="container mx-auto">
-      <h1 className="text-5xl md:text-6xl font-extrabold text-gray-700">TODAY I LEARNED</h1>
       <Suspense fallback="Loading...">
-        <UserInfo />
+        {/* <UserInfo /> */}
         <Posts />
       </Suspense>
     </div>

@@ -22,6 +22,7 @@ export default async function getAllPosts({ size, cursor }) {
     { size: size, cursor }
   )
 
+  // TODO: check if there are more
   const hasMore = true
   const nextPage = hasMore ? { size: size, cursor: allPosts.after } : null
   return {
